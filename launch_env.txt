@@ -1,0 +1,8 @@
+step 1:
+python3 -m venv bot-env
+
+step 2:
+source bot-env/bin/activate
+
+step 3:
+pip install -U discord.py
