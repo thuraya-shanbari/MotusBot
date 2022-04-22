@@ -16,6 +16,3 @@ async def on_message(message):
     
     if (message.content == "blue"):
         await message.add_reaction("\U0001F499")
-
-
-client.run('OTY2OTk2NTE1ODE2MDc5NDMw.YmJ3rw.ucwzVoE0mYLKQesNIvJ2UeAgZgA')
