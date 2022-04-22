@@ -8,7 +8,7 @@ load_dotenv(dotenv_path="src/config")
 
 class MotusBot(commands.Bot):
     def __init__(self):
-        super().__init__(command_prefix="!")
+        super().__init__(command_prefix="~")
 
     async def on_ready(self):
         print("MotusBot is ready to play!")
