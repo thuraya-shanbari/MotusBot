@@ -47,6 +47,7 @@ async def start(lang, channel, bot):
     found = True
 
     while (tries < 5):
+        found = True
         guess = await bot.wait_for('message')
         msg = guess.content
         if (len(msg) != 5):
