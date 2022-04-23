@@ -15,6 +15,7 @@ class MotusBot(commands.Bot):
 
 
 bot = MotusBot()
+is_playing = False
 
 
 @bot.command()
@@ -24,6 +25,11 @@ async def ping(ctx):
 
 @bot.command()
 async def play(ctx, arg=""):
+    global is_playing
+
+    if (is_playing == True):
+        return
+
     if (arg == ""):
         await ctx.send("Please specify a language")
 
@@ -37,6 +43,8 @@ async def play(ctx, arg=""):
 
     else:
         await ctx.send("Unknown language")
+
+    is_playing = False
 
 
 # @bot.event

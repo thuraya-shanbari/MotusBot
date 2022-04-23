@@ -77,7 +77,7 @@ async def start(lang, channel, bot):
         await chan.send(to_send)
         if (found == True):
             if (lang == "en"):
-                await chan.send("Congratulations! You have guess the word!")
+                await chan.send("Congratulations! You have guessed the word!")
             else:
                 await chan.send("Felicitations ! Vous avez trouve le mot !")
             return
@@ -92,6 +92,6 @@ async def start(lang, channel, bot):
 
     if (found == True):
         if (lang == "en"):
-            await chan.send("Congratulations! You have guess the word!")
+            await chan.send("Congratulations! You have guessed the word!")
         else:
             await chan.send("Felicitations ! Vous avez trouve le mot !")
