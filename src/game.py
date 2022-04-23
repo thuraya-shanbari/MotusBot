@@ -52,6 +52,12 @@ async def start(lang, channel, bot):
         if (len(msg) != 5):
             continue
 
+        if (msg not in eng_list and lang == "en"):
+            continue
+
+        if (msg not in fr_list and lang == "fr"):
+            continue
+
         res = place(msg, word)
         to_send = ""
         for letter in res:
