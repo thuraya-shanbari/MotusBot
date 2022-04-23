@@ -30,6 +30,8 @@ async def play(ctx, arg=""):
     if (is_playing == True):
         return
 
+    is_playing = True
+
     if (arg == ""):
         await ctx.send("Please specify a language")
 
