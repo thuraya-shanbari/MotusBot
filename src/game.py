@@ -79,7 +79,7 @@ async def start(lang, channel, bot):
                 await chan.send("Congratulations! You have guess the word!")
             else:
                 await chan.send("Felicitations ! Vous avez trouve le mot !")
-            break
+            return
 
         tries += 1
 
@@ -88,3 +88,9 @@ async def start(lang, channel, bot):
             await chan.send("Oh no! You lost! The word was: " + word)
         else:
             await chan.send("Oh non ! Vous avez perdu ! Le mot etait : " + word)
+
+    if (found == True):
+        if (lang == "en"):
+            await chan.send("Congratulations! You have guess the word!")
+        else:
+            await chan.send("Felicitations ! Vous avez trouve le mot !")
