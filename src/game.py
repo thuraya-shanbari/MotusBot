@@ -12,7 +12,8 @@ def file_to_list(filename):
 
 
 eng_list = file_to_list("src/words/english")
-fr_list = file_to_list("src/words/french")
+fr_list1 = file_to_list("src/words/french")
+fr_list = [word for word in fr_list1 if len(word) == 5]
 
 
 def word_to_guess(lang):
