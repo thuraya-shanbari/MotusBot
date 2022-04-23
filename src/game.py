@@ -18,10 +18,10 @@ fr_list = [word for word in fr_list1 if len(word) == 5]
 
 def word_to_guess(lang):
     if (lang == "en"):
-        rand = random.randint(0, 1376)
+        rand = random.randint(0, len(eng_list))
         return eng_list[rand]
     else:
-        rand = random.randint(0, 1530)
+        rand = random.randint(0, len(fr_list))
         return fr_list[rand]
 
 
