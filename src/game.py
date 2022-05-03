@@ -27,12 +27,14 @@ def word_to_guess(lang):
         return fr_list[rand]
 
 
-def place(guess, ref):
+def place(guess, ref, found_letters):
     res = ""
     for i in range(5):
         if (guess[i] == ref[i]):
             res += 'g'
-        elif (guess[i] in ref):
+            if (guess[i] in found_letters):
+                found_letters.remove(guess[i])
+        elif (guess[i] in ref and guess[i] in found_letters):
             res += 'y'
         else:
             res += 'r'
@@ -48,6 +50,7 @@ async def start(lang, channel, bot):
     await chan.send(blank)
     tries = 0
     found = True
+    found_letters = [i for i in word]
 
     while (tries < 5):
         found = True
@@ -62,7 +65,7 @@ async def start(lang, channel, bot):
         if (msg not in fr_list and lang == "fr"):
             continue
 
-        res = place(msg, unidecode.unidecode(word))
+        res = place(msg, unidecode.unidecode(word), found_letters)
         to_send = ""
         for letter in res:
             if (letter == 'g'):
@@ -98,3 +101,4 @@ async def start(lang, channel, bot):
             await chan.send("Congratulations! You have guessed the word!")
         else:
             await chan.send("Felicitations ! Vous avez trouve le mot !")
+
