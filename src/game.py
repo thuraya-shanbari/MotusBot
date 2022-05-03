@@ -8,7 +8,6 @@ def file_to_list(filename):
     f = open(filename)
     for line in f:
         res.append(line.lower()[:-1])
-        res.append(unidecode.unidecode(line.lower()[:-1]))
 
     return res
 
@@ -16,6 +15,7 @@ def file_to_list(filename):
 eng_list = file_to_list("src/words/english")
 fr_list1 = file_to_list("src/words/french")
 fr_list = [word for word in fr_list1 if len(word) == 5]
+fr_no_acc = [unidecode.unidecode(word) for word in fr_list1 if len(word) == 5]
 
 
 def word_to_guess(lang):
@@ -73,7 +73,7 @@ async def start(lang, channel, bot):
         if (msg not in eng_list and lang == "en"):
             continue
 
-        if (msg not in fr_list and lang == "fr"):
+        if ((msg not in fr_list or msg not in fr_no_acc) and lang == "fr"):
             continue
 
         res = place(msg, unidecode.unidecode(word))
