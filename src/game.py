@@ -27,19 +27,29 @@ def word_to_guess(lang):
         return fr_list[rand]
 
 
-def place(guess, ref):
+def correct_placement(guess, ref, found_letters):
     res = ""
-    found_letters = [i for i in ref]
     for i in range(5):
         if (guess[i] == ref[i]):
             res += 'g'
-            if (guess[i] in found_letters):
-                found_letters.remove(guess[i])
-        elif (guess[i] in ref and guess[i] in found_letters):
-            res += 'y'
             found_letters.remove(guess[i])
         else:
             res += 'r'
+
+    return res
+
+
+def place(guess, ref):
+    res = ""
+    found_letters = [i for i in ref]
+    green = correct_placement(guess, ref, found_letters)
+    for i in range(5):
+        if (guess[i] in found_letters):
+            res += 'y'
+            found_letters.remove(guess[i])
+        else:
+            res += green[i]
+
     return res
 
 
