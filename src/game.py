@@ -44,7 +44,7 @@ def place(guess, ref):
     found_letters = [i for i in ref]
     green = correct_placement(guess, ref, found_letters)
     for i in range(5):
-        if (guess[i] in found_letters):
+        if (guess[i] in found_letters and green[i] != 'g'):
             res += 'y'
             found_letters.remove(guess[i])
         else:
@@ -112,4 +112,5 @@ async def start(lang, channel, bot):
             await chan.send("Congratulations! You have guessed the word!")
         else:
             await chan.send("Felicitations ! Vous avez trouve le mot !")
+
 
