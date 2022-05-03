@@ -8,6 +8,7 @@ def file_to_list(filename):
     f = open(filename)
     for line in f:
         res.append(line.lower()[:-1])
+        res.append(unidecode.unidecode(line.lower()[:-1]))
 
     return res
 
