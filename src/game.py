@@ -41,7 +41,7 @@ def place(guess, ref):
 
 async def start(lang, channel, bot):
     chan = bot.get_channel(int(channel.id))
-    word = unidecode.unidecode(word_to_guess(lang))
+    word = word_to_guess(lang)
     blank = ""
     for i in range(5):
         blank += '\U000026AA'
@@ -62,7 +62,7 @@ async def start(lang, channel, bot):
         if (msg not in fr_list and lang == "fr"):
             continue
 
-        res = place(msg, word)
+        res = place(msg, unidecode.unidecode(word))
         to_send = ""
         for letter in res:
             if (letter == 'g'):
