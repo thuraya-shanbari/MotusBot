@@ -94,9 +94,9 @@ async def start(lang, channel, bot):
         await chan.send(to_send)
         if (found == True):
             if (lang == "en"):
-                await chan.send("Congratulations! You have guessed the word!")
+                await chan.send("Congratulations! You have guessed the word: " + guess)
             else:
-                await chan.send("Felicitations ! Vous avez trouve le mot !")
+                await chan.send("Felicitations ! Vous avez trouve le mot : " + guess)
             return
 
         tries += 1
