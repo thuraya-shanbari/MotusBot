@@ -1,4 +1,5 @@
 import random
+import unidecode
 from discord import NotFound
 
 
@@ -39,7 +40,7 @@ def place(guess, ref):
 
 async def start(lang, channel, bot):
     chan = bot.get_channel(int(channel.id))
-    word = word_to_guess(lang)
+    word = unidecode.unidecode(word_to_guess(lang))
     blank = ""
     for i in range(5):
         blank += '\U000026AA'
@@ -50,7 +51,7 @@ async def start(lang, channel, bot):
     while (tries < 5):
         found = True
         guess = await bot.wait_for('message')
-        msg = guess.content
+        msg = unidecode.unidecode(guess.content.lower())
         if (len(msg) != 5):
             continue
 
