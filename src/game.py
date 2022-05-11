@@ -17,6 +17,7 @@ fr_list1 = file_to_list("src/words/french")
 fr_list = [word for word in fr_list1 if len(word) == 5]
 fr_no_acc = [unidecode.unidecode(word) for word in fr_list1 if len(word) == 5]
 
+used = "\U0000274C "
 
 def word_to_guess(lang):
     if (lang == "en"):
@@ -54,6 +55,8 @@ def place(guess, ref):
 
 
 async def start(lang, channel, bot):
+    global used
+
     chan = bot.get_channel(int(channel.id))
     word = word_to_guess(lang)
     blank = ""
@@ -87,11 +90,14 @@ async def start(lang, channel, bot):
 
             if (letter == 'r'):
                 to_send += '\U0001F534'
+                used += letter
 
             if (letter != 'g'):
                 found = False
 
         await chan.send(to_send)
+        await chan.send(used)
+
         if (found == True):
             if (lang == "en"):
                 await chan.send("Congratulations! You have guessed the word: " + word)
