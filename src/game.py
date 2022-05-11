@@ -109,6 +109,8 @@ async def start(lang, channel, bot):
                 await chan.send("Congratulations! You have guessed the word: " + word)
             else:
                 await chan.send("Felicitations ! Vous avez trouve le mot : " + word)
+
+            used = "\U0000274C"
             return
 
         tries += 1
