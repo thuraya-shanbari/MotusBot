@@ -55,6 +55,10 @@ def place(guess, ref):
             res += 'y'
             found_letters.remove(guess[i])
             used = used.replace(guess[i], '')
+            used = used.replace("  ", ' ')
+        if (guess[i] in ref and guess[i] in used):
+            used = used.replace(guess[i], '')
+            used = used.replace("  ", " ")
         else:
             res += green[i]
 
