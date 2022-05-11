@@ -39,7 +39,7 @@ def correct_placement(guess, ref, found_letters):
         else:
             res += 'r'
             if (guess[i] not in used):
-                used += guess[i] + " "
+                used += " " + guess[i]
 
     return res
 
@@ -54,7 +54,7 @@ def place(guess, ref):
         if (guess[i] in found_letters and green[i] != 'g'):
             res += 'y'
             found_letters.remove(guess[i])
-            used.replace(guess[i], "")
+            used = used.replace(guess[i], '')
         else:
             res += green[i]
 
@@ -99,7 +99,8 @@ async def start(lang, channel, bot):
             if (letter != 'g'):
                 found = False
 
-        await chan.send(to_send + used)
+        await chan.send(to_send)
+        await chan.send(used)
 
         if (found == True):
             if (lang == "en"):
