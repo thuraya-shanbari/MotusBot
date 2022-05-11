@@ -29,6 +29,8 @@ def word_to_guess(lang):
 
 
 def correct_placement(guess, ref, found_letters):
+    global used
+
     res = ""
     for i in range(5):
         if (guess[i] == ref[i]):
@@ -36,11 +38,14 @@ def correct_placement(guess, ref, found_letters):
             found_letters.remove(guess[i])
         else:
             res += 'r'
+            used += guess[i] + " "
 
     return res
 
 
 def place(guess, ref):
+    global used
+
     res = ""
     found_letters = [i for i in ref]
     green = correct_placement(guess, ref, found_letters)
@@ -48,6 +53,7 @@ def place(guess, ref):
         if (guess[i] in found_letters and green[i] != 'g'):
             res += 'y'
             found_letters.remove(guess[i])
+            used.replace(guess[i], "")
         else:
             res += green[i]
 
@@ -55,8 +61,6 @@ def place(guess, ref):
 
 
 async def start(lang, channel, bot):
-    global used
-
     chan = bot.get_channel(int(channel.id))
     word = word_to_guess(lang)
     blank = ""
@@ -90,7 +94,6 @@ async def start(lang, channel, bot):
 
             if (letter == 'r'):
                 to_send += '\U0001F534'
-                used += letter
 
             if (letter != 'g'):
                 found = False
