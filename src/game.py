@@ -62,6 +62,8 @@ def place(guess, ref):
 
 
 async def start(lang, channel, bot):
+    global used
+
     chan = bot.get_channel(int(channel.id))
     word = word_to_guess(lang)
     blank = ""
@@ -123,4 +125,4 @@ async def start(lang, channel, bot):
         else:
             await chan.send("Felicitations ! Vous avez trouve le mot !")
 
-
+    used = ""
