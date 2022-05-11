@@ -73,7 +73,7 @@ async def start(lang, channel, bot):
         if (msg not in eng_list and lang == "en"):
             continue
 
-        if ((msg not in fr_list or msg not in fr_no_acc) and lang == "fr"):
+        if (msg not in fr_no_acc and lang == "fr"):
             continue
 
         res = place(msg, unidecode.unidecode(word))
