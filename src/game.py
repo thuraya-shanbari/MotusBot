@@ -53,7 +53,8 @@ def place(guess, ref):
         if (guess[i] in found_letters and green[i] != 'g'):
             res += 'y'
             found_letters.remove(guess[i])
-            used.replace(guess[i], "")
+            if (green[i] == 'y'):
+                used.replace(guess[i], "")
         else:
             res += green[i]
 
