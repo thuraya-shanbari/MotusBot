@@ -125,4 +125,4 @@ async def start(lang, channel, bot):
         else:
             await chan.send("Felicitations ! Vous avez trouve le mot !")
 
-    used = ""
+    used = "\U0000274C "
